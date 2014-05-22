@@ -8,6 +8,7 @@ errors:
 
 facebook:
   access_token:         TOKEN
+  access_secret_token:  SECRET
 
 redis:
   url:                  URL
@@ -20,10 +21,6 @@ twitter:
   access_token_secret:  SECRET_TOKEN
   consumer_key:         KEY
   consumer_secret:      SECRET
-
-vk:
-  app_id:               ID
-  app_secret:           SECRET
 
 znaigorod:
   url:                  URL
