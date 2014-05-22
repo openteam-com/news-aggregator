@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: profile_development
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: profile_production

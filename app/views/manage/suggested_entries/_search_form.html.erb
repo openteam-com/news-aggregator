@@ -1,0 +1,8 @@
+<div class="form">
+  <%= simple_form_for :search, url: entry_type_manage_suggested_entries_path(params[:entry_type]), method: :get do |f|%>
+    <div class='submit'>
+      <%= f.submit 'Найти', class: "btn" %>
+    </div>
+    <%= f.input :q, :as => :string, :label => false, :placeholder => 'Поиск', :input_html => { :value => search_query } %>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="form">
+<%= simple_form_for [:manage, @suggested_entry] do |f|  %>
+  <%= f.input :url, label: false, placeholder: "Адрес" %>
+  <%= f.input :title, as: :string, label: false, placeholder: "Заголовок" %>
+  <%= f.submit 'Сохранить', class: "btn" %>
+<% end %>
+</div>

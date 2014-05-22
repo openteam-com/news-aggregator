@@ -1,0 +1,40 @@
+.content .left_side
+
+  .search
+    +clearfix
+
+    form
+      margin: 0
+
+    .input
+      margin-right: 107px
+
+      input
+        width: 100%
+        +verdana_font
+        outline: none
+        border: 1px solid #ccc
+        background-color: #fff
+        +box-shadow(rgba(#000, .1) 0 1px 2px inset)
+        padding: .5rem
+
+    .submit
+      float: right
+
+      input
+        color: #333
+        cursor: pointer
+        +georgia_font
+        padding: .55rem .8rem
+        +border-radius(2px)
+        border: none
+        +inline-block
+        background-color: #f1f1f1
+
+        &:hover
+          background-color: #f3f3f3
+          +box-shadow(rgba(#000, 0.3) 1px 1px 2px)
+
+        &:active
+          padding-top: .6rem
+          padding-bottom: .5rem

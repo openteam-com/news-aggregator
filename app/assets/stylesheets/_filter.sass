@@ -1,0 +1,84 @@
+.content .left_side
+
+  .filter
+
+    .timestamp
+      width: 60%
+      +inline-block
+
+    .sort_by
+      width: 40%
+      +inline-block
+      text-align: right
+
+    .timestamp,
+    .sort_by
+      margin-right: -2px
+      span
+        +inline-block
+        line-height: 1
+        margin-right: 5px
+      ul
+        +inline-block
+        line-height: 1
+      li
+        +inline-block
+        margin-right: 5px
+        padding-right: 7px
+        border-right: 1px solid #333
+        line-height: 1
+
+        a
+          text-decoration: none
+
+        &:last-child
+          margin-right: 0
+          padding-right: 0
+          border-right: none
+
+        &.selected a
+          color: #444
+          font-size: 22px
+
+          &:hover
+            border-color: #128bce
+
+  .source
+    text-align: right
+    white-space: nowrap
+
+    form
+      margin-bottom: 0
+
+    .input
+      margin-right: 89px
+
+      select
+        +verdana_font
+        outline: none
+        border: 1px solid #ccc
+        background-color: #fff
+        +box-shadow(rgba(#000, .1) 0 1px 2px inset)
+        padding: .45rem .5rem
+
+    .submit
+      float: right
+      +inline-block
+      margin-right: 5px
+
+      input
+        color: #333
+        cursor: pointer
+        padding: .55rem .5rem
+        +border-radius(2px)
+        border: none
+        +inline-block
+        background-color: #f1f1f1
+
+        &:hover
+          background-color: #f3f3f3
+          +box-shadow(rgba(#000, 0.3) 1px 1px 2px)
+
+        &:active
+          padding-top: .6rem
+          padding-bottom: .5rem

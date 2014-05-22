@@ -1,0 +1,17 @@
+<div class='right_side'>
+  <p><%= link_to image_tag('sber.png', :size => '410x150', class: "right_adv"), '/' %></p>
+  <% SuggestedEntry.available_types.each do |entry_kind| %>
+    <div class="<%=  entry_kind.pluralize %>">
+      <%= link_to "+Добавить", new_suggested_entry_path, onclick: "return false", class: "open_form_link", id: "new_#{entry_kind}" %>
+      <h2><%= t("suggested.#{entry_kind.pluralize}") %></h2>
+      <div class="indent_from_left">
+        <% SuggestedEntry.send(entry_kind).limit(3).each do |entry|%>
+          <span class="icon"><%= image_tag entry.favicon, size: "16x16" %></span>
+          <p><%= link_to entry.title, entry.url, target: "_blank" %></p>
+        <% end %>
+      </div>
+      <%= link_to "Смотреть все...", suggested_list_path(:kind => entry_kind), class: "show_all" %>
+    </div>
+  <% end %>
+  <p><%= link_to image_tag('sber.png', :size => '410x150'), '/' %></p>
+</div>

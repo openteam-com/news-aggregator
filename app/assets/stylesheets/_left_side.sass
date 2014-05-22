@@ -1,0 +1,82 @@
+.content .left_side
+
+  table
+    width: 100%
+
+    thead tr
+
+      th
+        width: 5%
+        font-size: 1.7rem
+        padding-bottom: 10px
+        padding-left: 5px
+        padding-right: 5px
+
+        &:first-child
+          padding-left: 10px
+
+        &.left
+          width: 65%
+
+        span
+          display: block
+          cursor: help
+          width: 24px
+          height: 24px
+          overflow: hidden
+          text-indent: -9999em
+          background-color: transparent
+          background-position: center center
+          background-repeat: no-repeat
+          margin: 0 auto
+
+
+          &.vkontakt
+            background-image: image_url('vk.png')
+
+          &.facebook
+            background-image: image_url('fb.png')
+
+          &.twitter
+            background-image: image_url('twitter.png')
+
+          &.likes
+            background-image: image_url('like.png')
+
+          &.comments
+            background-image: image_url('comment.png')
+
+          &.rating
+            background-image: image_url('rating.png')
+
+    tbody tr
+      &:hover
+        background-color: #f5f5f5
+
+      td
+        text-align: center
+        border-bottom: 1px solid #efefef
+        padding: 10px
+
+        &.left
+          text-align: left
+          color: #222
+          font-size: 18px
+
+          .favicon
+            float: left
+
+          p
+            margin-left: 25px
+
+            a
+              text-decoration: none
+
+        &.rating
+          +georgia_font
+          font-size: 16px
+
+        span
+          display: inline-block
+          float: left
+          +clearfix

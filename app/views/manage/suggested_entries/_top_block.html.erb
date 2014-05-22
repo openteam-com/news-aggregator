@@ -1,0 +1,6 @@
+<ul>
+  <li <%= ' class="selected"'.html_safe if params[:entry_type].nil? %>><%= link_to "Модерация", manage_suggested_entries_path %></li>
+  <% SuggestedEntry.available_types.each do |scope| %>
+    <li <%= ' class="selected"'.html_safe if params[:entry_type] == scope %>><%= link_to t("entry_type.#{scope}"), entry_type_manage_suggested_entries_path(scope) %>
+  <% end %>
+</ul>

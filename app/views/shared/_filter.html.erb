@@ -1,0 +1,22 @@
+<div class='filter'>
+  <div class='timestamp'>
+    <span>За</span>
+    <ul>
+      <% Entry.available_periods.each do |scope| %>
+        <li<%= " class='selected'".html_safe if current_period == scope %>>
+          <%= link_to t("period.#{scope}"), period_path(scope, params) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class='sort_by'>
+    <span>По</span>
+    <ul>
+      <% Entry.available_sorts.each do |sort| %>
+        <li<%= " class='selected'".html_safe if current_sort == sort %>>
+          <%= link_to t("sort_by.#{sort}"), sort_by_path(sort, params) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

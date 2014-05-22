@@ -1,0 +1,9 @@
+<ul>
+  <li <%= ' class="selected"'.html_safe if params[:controller] == "manage/sources" %>>
+    <%= link_to "RSS - ленты", manage_sources_path  %>
+  </li>
+  <li <%= ' class="selected"'.html_safe if params[:controller] == "manage/suggested_entries" %>>
+    <%= link_to "Модерация", manage_suggested_entries_path %>
+  </li>
+</ul>
+

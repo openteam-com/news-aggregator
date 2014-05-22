@@ -1,0 +1,9 @@
+<div class="form">
+  <%= link_to "удалить", [:manage, @source], :method => :delete, :confirm => 'Уверены что хотите удалить источник и все связанные с ним новости' unless @source.new_record? %>
+  <%= simple_form_for [:manage, @source] do |f|  %>
+    <%= f.input :url, label: false, placeholder: "Адрес" %>
+    <%= f.input :title, label: false, placeholder: "Заголовок" %>
+    <%= f.input :favicon, label: false, placeholder: "Иконка" if params[:action] == "edit" %>
+    <%= f.submit 'Сохранить', class: "btn" %>
+  <% end %>
+</div>

@@ -1,0 +1,29 @@
+=georgia_font
+  font-family: Georgia, Times, 'Times New Roman', serif
+
+=verdana_font
+  font-family: Verdana, Geneva, sans-serif
+
+body
+  font-size: 14px
+  font-weight: normal
+  +georgia_font
+  color: #333
+  background-color: #fff
+  line-height: 1.6
+
+  a
+    color: #0b5680
+    text-decoration: underline
+
+    &:hover
+      color: #128bce
+      text-decoration: none
+  em
+    background-color: yellow
+
+  .nobr
+    display: inline !important
+    float: none !important
+    overflow: visible !important
+    white-space: nowrap

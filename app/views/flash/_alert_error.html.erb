@@ -1,0 +1,10 @@
+<% if flash[:alert] %>
+  <div class="wrap-flash">
+    <div class="flash-alert">
+      <div class="close-flash-notice">
+        <%= link_to (image_tag "close.jpg", size: "20x20"), "#", class: "close-parent"%>
+      </div>
+      <%= flash[:alert] %>
+    </div>
+  </div>
+<% end %>

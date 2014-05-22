@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title><%= content_for?(:title) ? yield(:title) : "Статистика новостей" %></title>
+
+    <%= stylesheet_link_tag    "manage/application" %>
+    <%= javascript_include_tag "manage/application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="left_side">
+        <%= render 'manage/commons/left_block' %>
+      </div>
+      <div class="right_side">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

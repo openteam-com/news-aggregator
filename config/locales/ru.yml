@@ -1,0 +1,22 @@
+ru:
+  period:
+    newest: 12 часов
+    today: день
+    threedays: 3 дня
+    weekly: неделю
+    monthly: месяц
+    alltime: все время
+
+  entry_type:
+    interview: Интервью
+    interesting: Интересное
+    article: Статьи
+
+  sort_by:
+    novelty: новизне
+    rating: рейтингу
+
+  suggested:
+    interestings: Интересное
+    interviews: Интервью
+    articles: Статьи

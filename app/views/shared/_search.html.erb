@@ -1,0 +1,9 @@
+<div class='search'>
+  <%= simple_form_for :search, :url => period_path(current_period, params), :method => :get do |f| %>
+    <div class='submit'>
+      <%= f.submit 'Найти' %>
+    </div>
+    <%= f.input :q, :as => :string, :label => false, :placeholder => 'Поиск', :input_html => { :value => search_query } %>
+    <%= f.input :source, :as => :hidden, :input_html => {:value => current_source} %>
+  <% end %>
+</div>

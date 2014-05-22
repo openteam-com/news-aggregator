@@ -1,0 +1,26 @@
+<%= render "flash/alert_error" %>
+<%= render "flash/notice_success" %>
+
+<div class="control">
+  <h2>Текущие источники</h2>
+  <%= link_to "Добавить",  [:new, :manage, :source] %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Заголовок</th>
+      <th>Источник</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sources.each do |source| %>
+      <tr>
+        <td><%= source.title %></td>
+        <td><%= source.source %></td>
+        <td><%= link_to "Изменить", edit_manage_source_path(source) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

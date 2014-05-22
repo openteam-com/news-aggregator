@@ -1,0 +1,29 @@
+app:
+  secret:               SECRET
+  url:                  REDIRECT_URL
+
+errors:
+  key:                  KEY
+  url:                  URL
+
+facebook:
+  access_token:         TOKEN
+
+redis:
+  url:                  URL
+
+solr:
+  url:                  URL
+
+twitter:
+  access_token:         TOKEN
+  access_token_secret:  SECRET_TOKEN
+  consumer_key:         KEY
+  consumer_secret:      SECRET
+
+vk:
+  app_id:               ID
+  app_secret:           SECRET
+
+znaigorod:
+  url:                  URL

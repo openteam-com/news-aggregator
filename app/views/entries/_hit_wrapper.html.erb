@@ -1,0 +1,13 @@
+<tr>
+  <td class='left'>
+    <span class='favicon'><%= image_tag hit_wrapper.result.source.favicon, :size => '16x16' %></span>
+    <p><%= link_to hit_wrapper.title.html_safe, hit_wrapper.result.url, :target => '_blank' %></p>
+  </td>
+  <td class="rating"><%= hit_wrapper.result.vk_shares_count.to_i %></td>
+  <td class="rating"><%= hit_wrapper.result.facebook_shares_count.to_i %></td>
+  <td class="rating"><%= hit_wrapper.result.twitter_shares_count.to_i %></td>
+  <td class="rating"><%= hit_wrapper.result.vk_likes_count.to_i %></td>
+  <td class="rating"><%= hit_wrapper.result.summary_comments_count %></td>
+  <td class="rating"><%= hit_wrapper.result.rating %></td>
+</tr>
+

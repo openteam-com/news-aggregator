@@ -1,0 +1,10 @@
+<table>
+  <thead>
+    <tr>
+      <th class='left'><%= t("suggested.#{params[:kind].pluralize}") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render 'entries_body' %>
+  </tbody>
+</table>

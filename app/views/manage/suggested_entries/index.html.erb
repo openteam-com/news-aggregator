@@ -1,0 +1,48 @@
+<%= render "flash/alert_error" %>
+<%= render "flash/notice_success" %>
+
+<%= render "top_block" %>
+
+<table>
+  <thead>
+    <th>Заголовок</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><h4>Интересное(<%= @new_interesting_entries.count %>)</h4></td>
+    </tr>
+    <% @new_interesting_entries.each do |entry| %>
+      <tr>
+        <td><%= link_to  entry.title, entry.url, target: "_blank"%></td>
+        <td><%= link_to "Утвердить", manage_suggested_entry_approve_path(entry, entry_type: :interesting) %></td>
+        <td><%= link_to "Изменить", edit_manage_suggested_entry_path(entry) %></td>
+        <td><%= link_to "Удалить", manage_suggested_entry_path(entry), :method => :delete %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td><h4>Интервью(<%= @new_interview_entries.count %>)</h4></td>
+    </tr>
+    <% @new_interview_entries.each do |entry| %>
+      <tr>
+        <td><%= link_to  entry.title, entry.url, target: "_blank"%></td>
+        <td><%= link_to "Утвердить", manage_suggested_entry_approve_path(entry, entry_type: :interview) %></td>
+        <td><%= link_to "Изменить", edit_manage_suggested_entry_path(entry) %></td>
+        <td><%= link_to "Удалить", manage_suggested_entry_path(entry), :method => :delete %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td> <h4>Статьи(<%= @new_article_entries.count %>)</h4></td>
+    </tr>
+    <% @new_article_entries.each do |entry| %>
+      <tr>
+        <td><%= link_to  entry.title, entry.url, target: "_blank"%></td>
+        <td><%= link_to "Утвердить", manage_suggested_entry_approve_path(entry, entry_type: :article) %></td>
+        <td><%= link_to "Изменить", edit_manage_suggested_entry_path(entry) %></td>
+        <td><%= link_to "Удалить", manage_suggested_entry_path(entry), :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

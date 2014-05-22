@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang='ru'>
+  <head>
+    <meta charset='UTF-8'>
+    <title><%= content_for?(:title) ? yield(:title) : 'Все новости Томска' %></title>
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render :partial => 'flash/notice_success' %>
+    <%= render :partial => 'flash/alert_error' %>
+    </div>
+    <%= render :partial => 'header' %>
+    <div class='container'>
+      <div class='content'>
+        <div class='left_side'>
+          <%= render :partial => 'shared/search' if controller_name == 'entries' %>
+          <%= render :partial => 'shared/filter'if controller_name == 'entries' %>
+          <%= yield %>
+        </div>
+        <%#= render :partial => 'shared/right_side' %>
+      </div>
+    </div>
+    <%= render :partial => 'shared/modal_window' %>
+    <%= render :partial => 'shared/footer' %>
+  </body>
+</html>

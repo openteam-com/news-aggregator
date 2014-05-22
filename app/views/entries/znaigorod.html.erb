@@ -1,0 +1,30 @@
+<h1><%= link_to '%title%', 'http://news.znaigorod.ru' %></h1>
+<table>
+  <thead>
+    <tr>
+      <th class='left'>
+        <div class='timestamp'>
+          <span>За</span>
+          <ul>
+            <% Entry.available_periods.each do |scope| %>
+              <li<%= " class='selected'".html_safe if current_period == scope %>>
+                <%= link_to t("period.#{scope}"), period_url(scope) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </th>
+      <th><span class='vkontakt' title='Упоминания ВКонтакте'></span></th>
+      <th><span class='facebook' title='Упоминания в Facebook'></span></th>
+      <th><span class='twitter' title='Упоминания в Twitter'></span></th>
+      <th><span class='likes' title='Понравилось во Вконтакте и в Facebook-е'></span></th>
+      <th><span class='comments' title='Комментарии во Вконтакте и в Facebook-е'></span></th>
+      <th><span class='rating' title='Общий рейтинг'></span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entries_wrapper.collection.each do |entry| %>
+      <%= render entry %>
+    <% end %>
+  </tbody>
+</table>

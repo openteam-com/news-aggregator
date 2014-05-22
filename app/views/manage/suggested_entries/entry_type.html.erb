@@ -1,0 +1,21 @@
+<%= render "flash/alert_error" %>
+<%= render "flash/notice_success" %>
+
+<%= render "top_block" %>
+<%= render "search_form" %>
+<table>
+  <thead>
+    <th>Заголовок</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @suggested_entries.each do |entry| %>
+      <tr>
+        <td> <%= link_to entry.title, entry.url, target: "_blank" %></td>
+        <td>  <%= link_to "Изменить", edit_manage_suggested_entry_path(entry) %></td>
+        <td><%= link_to "Удалить", manage_suggested_entry_path(entry), :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
