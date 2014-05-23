@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140415133351) do
+ActiveRecord::Schema.define(:version => 20140523022312) do
 
   create_table "entries", :force => true do |t|
     t.text     "title"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20140415133351) do
     t.datetime "facebook_updated_at"
     t.integer  "twitter_shares_count"
     t.datetime "twitter_updated_at"
+    t.integer  "facebook_likes_count"
   end
 
   add_index "entries", ["source_id"], :name => "index_entries_on_source_id"

@@ -68,7 +68,8 @@ class Entry < ActiveRecord::Base
       self.vk_likes_count*0.5 +
       self.vk_comments_count*0.5 +
       self.facebook_shares_count +
-      self.facebook_comments_count*0.5
+      self.facebook_comments_count*0.5 +
+      self.facebook_likes_count*0.5
   end
 end
 
