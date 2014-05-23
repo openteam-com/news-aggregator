@@ -6,5 +6,6 @@
  * = require jquery_ujs
  * = require alerts
  * = require tipsy
+ * = require social-likes
  * = require main
  */

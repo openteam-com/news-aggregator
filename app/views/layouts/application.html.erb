@@ -17,6 +17,7 @@
       <div class='content'>
         <div class='left_side'>
           <%= render :partial => 'shared/search' if controller_name == 'entries' %>
+          <%= render :partial => 'social_likes' %>
           <%= render :partial => 'shared/filter'if controller_name == 'entries' %>
           <%= yield %>
         </div>
