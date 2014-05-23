@@ -33,6 +33,7 @@
     <div class='container'>
       <div class='content'>
         <div class='left_side'>
+          <%= render :partial => 'promo' %>
           <%= render :partial => 'shared/search' if controller_name == 'entries' %>
           <%= render :partial => 'social_like' %>
           <%= render :partial => 'shared/filter'if controller_name == 'entries' %>

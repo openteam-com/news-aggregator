@@ -1,5 +1,5 @@
 /* base */
-$desktop_min_width: 1000px
+$desktop_min_width: 970px
 $desktop_max_width: 1440px
 $desktop_default_width: 1200px
 
@@ -363,7 +363,6 @@ $desktop_default_width: 1200px
 
   .header
     +liquid-size($desktop_min_width, $desktop_max_width)
-    +fixed-size
     position: relative
 
     .logo
@@ -393,6 +392,7 @@ $desktop_default_width: 1200px
           text-decoration: none
 
     .webcams
+      font-size: 11px
       background: #009999
       color: #fff
       height: 26px
@@ -595,7 +595,7 @@ body
   background-color: #fff
   color: #000
   font-family: 'Verdana', 'Tahoma', sans-serif
-  font-size: 11px
+  font-size: 12px
   line-height: 1.5
   // TODO required in the future, when the layout will be liquid
   //+min-width($desktop_min_width)
