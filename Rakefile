@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-NewsAgregator::Application.load_tasks
+NewsAggregator::Application.load_tasks

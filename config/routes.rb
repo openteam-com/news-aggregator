@@ -1,5 +1,5 @@
 require 'sidekiq/web'
-NewsAgregator::Application.routes.draw do
+NewsAggregator::Application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
 
   root to: 'entries#index'
