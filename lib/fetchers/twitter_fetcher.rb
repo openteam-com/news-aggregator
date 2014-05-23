@@ -15,7 +15,6 @@ class TwitterFetcher
   end
 
   def update_stat
-    #newest_entries = Entry.newest.where('twitter_updated_at = null OR twitter_updated_at < ?', Time.zone.now - 2.hour).limit(TwitterFetcher.limit)
     newest_entries = Entry.newest.where('twitter_updated_at IS NULL OR twitter_updated_at < ?', Time.zone.now - 2.hour).limit(TwitterFetcher.limit)
     last_updated_entries = Entry.order(:twitter_updated_at).limit(TwitterFetcher.limit - newest_entries.count)
     (newest_entries + last_updated_entries).each do |entry|
