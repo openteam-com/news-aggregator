@@ -29,7 +29,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.available_sorts
-    ['novelty', 'rating']
+    ['rating', 'novelty']
   end
 
   def stripped_url
