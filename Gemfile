@@ -20,7 +20,6 @@ group :default do
   gem 'gilenson'
   gem 'has_searcher'
   gem 'kaminari'
-  gem 'koala',                '~> 1.9'
   gem 'nokogiri'
   gem 'openteam-commons'
   gem 'pg'
