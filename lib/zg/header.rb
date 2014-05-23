@@ -11,7 +11,7 @@ class Zg::Header
   end
 
   def parse_header
-    html.css('.new_feature, .header_wrapper')
+    @parse_header ||= html.css('.new_feature, .header_wrapper')
   end
 
   def tags
@@ -19,6 +19,14 @@ class Zg::Header
       'a'      => 'href',
       'form'   => 'action'
     }
+  end
+
+  def entries_to_remove
+    ['.search_form', '.dashboard']
+  end
+
+  def remove_entries
+    parse_header.search(entries_to_remove).remove
   end
 
   def update_urls
@@ -31,6 +39,7 @@ class Zg::Header
   end
 
   def render
+    remove_entries
     update_urls.to_s.html_safe
   end
 end
