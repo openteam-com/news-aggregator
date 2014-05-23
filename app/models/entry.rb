@@ -44,6 +44,10 @@ class Entry < ActiveRecord::Base
     vk_comments_count.to_i + facebook_comments_count.to_i
   end
 
+  def summary_likes_count
+    vk_likes_count.to_i + facebook_likes_count.to_i
+  end
+
   def link
     "#{Settings['app.url']}/away?to=#{url}"
   end
@@ -57,6 +61,7 @@ class Entry < ActiveRecord::Base
     self.vk_comments_count ||= 0
     self.facebook_shares_count ||= 0
     self.facebook_comments_count ||= 0
+    self.facebook_likes_count ||= 0
     self.twitter_shares_count ||= 0
     update_rating
   end
