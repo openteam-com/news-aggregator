@@ -31,13 +31,13 @@ group :default do
   gem 'simple_form'
   gem 'sinatra',                                  :require => false
   gem 'sunspot_rails',        '=2.0.0'
-  gem 'sunspot_solr',         '=2.0.0'
   gem 'twitter'
   gem 'vkontakte_api'
   gem 'whenever'
 end
 
 group :development do
+  gem 'sunspot_solr',         '=2.0.0'
   gem 'annotate',                                 :require => false
   gem 'brakeman',                                 :require => false
   gem 'capistrano-db-tasks',  :ref => '396cbbf',  :require => false,           :git => 'git://github.com/sgruhier/capistrano-db-tasks'
