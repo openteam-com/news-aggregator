@@ -21,11 +21,4 @@ namespace :update do
     VkFetcher.new.update_older_stat
     FacebookFetcher.new.update_older_stat
   end
-
-  desc 'Update all facebook statistics'
-  task :facebook_all_stats => :environment do
-    Entry.all.each do |entry|
-      FacebookFetcherWorker.perform_async(entry.id)
-    end
-  end
 end

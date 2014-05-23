@@ -7,5 +7,4 @@ production:
   :concurrency: 20
   :queues:
     - [default, 20]
-    - [facebook_fetcher, 5]
 
