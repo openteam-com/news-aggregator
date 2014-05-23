@@ -22,4 +22,8 @@ namespace :update do
     FacebookFetcher.new.update_older_stat
   end
 
+  desc 'Update all facebook statistics'
+  task :facebook_all_stats => :environment do
+    FacebookFetcher.new.update_all
+  end
 end
