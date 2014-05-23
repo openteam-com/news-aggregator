@@ -1,6 +1,5 @@
 app:
   secret:               SECRET
-  url:                  REDIRECT_URL
 
 errors:
   key:                  KEY
