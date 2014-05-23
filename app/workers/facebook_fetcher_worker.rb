@@ -1,29 +1,21 @@
-require 'progress_bar'
+class FacebookFetcherWorker
+  include Sidekiq::Worker
+  sidekiq_options :queue => :facebook_fetcher
 
-class FacebookFetcher
-  def update_newest_stat
-    entries = Entry.newest
-    pb = ProgressBar.new(entries.count)
+  attr_accessor :entry
 
-    entries.each do |entry|
-      update_entry_stat(entry)
-      pb.increment!
-    end
-  end
-
-  def update_older_stat
-    entries = Entry.order(:facebook_updated_at).limit(500)
-    pb = ProgressBar.new(entries.count)
-
-    entries.each do |entry|
-      update_entry_stat(entry)
-      pb.increment!
-    end
+  def perform(entry_id)
+    find_entry(entry_id)
+    update_entry_stat
   end
 
   private
 
-  def update_entry_stat(entry)
+  def find_entry(entry_id)
+    @entry ||= Entry.find(entry_id)
+  end
+
+  def update_entry_stat
     entry.facebook_shares_count = get_stats(entry.url).first['share_count']
     entry.facebook_comments_count = get_stats(entry.url).first['comment_count']
     entry.facebook_likes_count = get_stats(entry.url).first['like_count']

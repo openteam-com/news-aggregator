@@ -24,6 +24,8 @@ namespace :update do
 
   desc 'Update all facebook statistics'
   task :facebook_all_stats => :environment do
-    FacebookFetcher.new.update_all
+    Entry.all.each do |entry|
+      FacebookFetcherWorker.perform_async(entry.id)
+    end
   end
 end
