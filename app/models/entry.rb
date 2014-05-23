@@ -49,7 +49,7 @@ class Entry < ActiveRecord::Base
   end
 
   def link
-    "#{Settings['app.url']}/away?to=#{url}"
+    AwayLink.to(url)
   end
 
   private

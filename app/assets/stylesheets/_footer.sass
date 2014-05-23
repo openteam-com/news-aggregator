@@ -1,15 +1,86 @@
-.footer
+$desktop_min_width: 970px
+$desktop_max_width: 1440px
+$desktop_default_width: 1200px
 
-  margin-bottom: 0px
+=max-width($max_width)
+  max-width: $max_width
 
-  ul
-    text-align: center
+=liquid-size($min_width, $max_width)
+  +min-width($min_width)
+  +max-width($max_width)
+  margin: 0 auto
 
-    li
-      font-size: 1.05rem
-      +inline-block
-      margin: 0 5px
+=fixed-size
+  +min-width(0)
+  +max-width(none)
+  width: $desktop_default_width !important
+  margin: 0 auto
 
-      &.metrika
-        display: block
-        float: right
+.footer_wrapper
+  +clearfix
+  background-color: #e8e8e8
+  border-top: 1px solid #ccc
+
+  .footer
+    +liquid-size($desktop_min_width, $desktop_max_width)
+    +clearfix
+    margin-top: 10px
+    margin-bottom: 10px
+
+    .contacts
+      float: right
+      margin-right: 10px
+      width: 440px
+
+      h5
+        font-size: 14px
+        margin-bottom: 5px
+
+    .our_social_link
+      float: left
+      +clearfix
+      margin-left: 10px
+      margin-bottom: 10px
+
+      h5
+        font-size: 14px
+        +inline-block
+        margin-right: 5px
+
+      ul
+        +inline-block
+
+        li
+          +inline-block
+          width: 16px
+          height: 16px
+          margin-right: 5px
+
+          a
+            display: block
+            width: 16px
+            height: 16px
+            text-indent: -9999em
+            background: transparent image_url('our_social_link.png') no-repeat 0 0
+
+          &.vk a
+            background-position: 0 0
+          &.fb a
+            background-position: -16px 0
+          &.odnoklassniki a
+            background-position: -32px 0
+          &.twitter a
+            background-position: -48px 0
+
+    .counters
+      float: left
+      clear: left
+      margin-left: 10px
+
+      a, img
+        +inline-block
+        margin-right: 5px
+
+      .rambler_counter, .allbest_counter
+        border: 0
+
