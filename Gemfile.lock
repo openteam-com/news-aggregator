@@ -122,6 +122,7 @@ GEM
     hashie (2.1.1)
     highline (1.6.21)
     hike (1.2.3)
+    hirb (0.7.1)
     http (0.5.0)
       http_parser.rb
     http_parser.rb (0.6.0)
@@ -328,6 +329,7 @@ DEPENDENCIES
   foundation-rails
   gilenson
   has_searcher
+  hirb
   jquery-rails
   jquery-ui-sass-rails
   kaminari
