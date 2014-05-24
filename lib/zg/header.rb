@@ -33,7 +33,7 @@ class Zg::Header
     parse_header.search(tags.keys.join(',')).each do |node|
       url_param = tags[node.name]
       src       = node[url_param]
-      node[url_param] = Settings['znaigorod.url']+src
+      node[url_param] = Settings['znaigorod.url']+src unless src.match(/\Ahttp/)
     end
     parse_header
   end
