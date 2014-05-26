@@ -16,10 +16,10 @@ HasSearcher.create_searcher :entries do
     with(:published_at).greater_than DateTime.now.beginning_of_day
   end
   scope :weekly do
-    with(:published_at).greater_than Time.zone.now.beginning_of_week
+    with(:published_at).greater_than Time.zone.now - 7.days
   end
   scope :monthly do
-    with(:published_at).greater_than Time.zone.now.beginning_of_month
+    with(:published_at).greater_than Time.zone.now - 30.days
   end
   scope :alltime do
     with(:published_at).less_than Time.zone.now

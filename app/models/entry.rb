@@ -9,8 +9,8 @@ class Entry < ActiveRecord::Base
   scope :newest, -> { where('published_at >= :time', {:time => Time.zone.now-12.hour}) }
   scope :today, -> { where('published_at >= :time', {:time => Time.zone.now.beginning_of_day}) }
   scope :threedays, -> { where('published_at >= :time', {:time => Time.zone.now.beginning_of_day - 3.days}) }
-  scope :weekly, -> { where('published_at >= :time', {:time => Time.zone.now.beginning_of_week}) }
-  scope :monthly, -> { where('published_at >= :time', {:time => Time.zone.now.beginning_of_month}) }
+  scope :weekly, -> { where('published_at >= :time', {:time => Time.zone.now - 7.days}) }
+  scope :monthly, -> { where('published_at >= :time', {:time => Time.zone.now - 30.days}) }
   scope :alltime
 
   scope :rating, -> { order('rating desc') }
