@@ -24,6 +24,7 @@
     <meta name='twitter:domain' content='<%= Settings['app']['url'] %>'>
     <meta name='twitter:url' content='<%= Settings['app']['url'] %>'>
     <meta name='twitter:image' content='<%= URI.join(root_url, asset_path('social_image_twitter.jpg')) %>'>
+    <link rel='canonical' href='<%= Settings['app.url'] %>' />
   </head>
   <body>
     <%= render :partial => 'flash/notice_success' %>
