@@ -36,7 +36,7 @@
         <div class='left_side'>
           <%= render :partial => 'promo' %>
           <%= render :partial => 'shared/search' if controller_name == 'entries' %>
-          <%= render :partial => 'social_like' %>
+          <%= render :partial => 'social_share' %>
           <%= render :partial => 'shared/filter'if controller_name == 'entries' %>
           <%= yield %>
           <%= render :partial => 'social_share' %>
