@@ -11,7 +11,7 @@ class Zg::Header
   end
 
   def parse_header
-    @parse_header ||= html.css('.new_feature, .header_wrapper')
+    @parse_header ||= html.css('.header_wrapper')
   end
 
   def tags
