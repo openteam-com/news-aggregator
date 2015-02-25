@@ -7,6 +7,7 @@ ru:
   period:
     newest: 12 часов
     today: день
+    yesterday: вчера
     threedays: 3 дня
     weekly: неделю
     monthly: месяц

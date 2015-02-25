@@ -15,6 +15,9 @@ HasSearcher.create_searcher :entries do
   scope :today do
     with(:published_at).greater_than DateTime.now.beginning_of_day
   end
+  scope :yesterday do
+    with(:published_at).greater_than DateTime.yesterday.beginning_of_day..DateTime.yesterday.end_of_day
+  end
   scope :weekly do
     with(:published_at).greater_than Time.zone.now - 7.days
   end

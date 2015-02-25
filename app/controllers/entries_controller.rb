@@ -15,8 +15,8 @@ class EntriesController < ApplicationController
   end
 
   def znaigorod
-     @entries_wrapper = EntriesWrapper.new(Entry.send('newest').send('rating').page(1).per(6))
-     render layout: false
+    @entries_wrapper = EntriesWrapper.new(Entry.send('newest').send('rating').page(1).per(6))
+    render layout: false
   end
 
   protected

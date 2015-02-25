@@ -6,11 +6,12 @@ class Entry < ActiveRecord::Base
   validates_uniqueness_of :url
   before_save :default_values
 
-  scope :newest, -> { where('published_at >= :time', {:time => Time.zone.now-12.hour}) }
-  scope :today, -> { where('published_at >= :time', {:time => Time.zone.now.beginning_of_day}) }
-  scope :threedays, -> { where('published_at >= :time', {:time => Time.zone.now.beginning_of_day - 3.days}) }
-  scope :weekly, -> { where('published_at >= :time', {:time => Time.zone.now - 7.days}) }
-  scope :monthly, -> { where('published_at >= :time', {:time => Time.zone.now - 30.days}) }
+  scope :newest, -> { where('published_at >= :time', { :time => Time.zone.now-12.hour }) }
+  scope :today, -> { where('published_at >= :time', { :time => Time.zone.now.beginning_of_day }) }
+  scope :yesterday, -> { where('published_at >= :time', { :time => Date.today-1...Date.today }) }
+  scope :threedays, -> { where('published_at >= :time', { :time => Time.zone.now.beginning_of_day - 3.days }) }
+  scope :weekly, -> { where('published_at >= :time', { :time => Time.zone.now - 7.days }) }
+  scope :monthly, -> { where('published_at >= :time', { :time => Time.zone.now - 30.days }) }
   scope :alltime
 
   scope :rating, -> { order('rating desc') }
@@ -25,7 +26,7 @@ class Entry < ActiveRecord::Base
   end
 
   def self.available_periods
-    ['newest', 'today', 'threedays', 'weekly', 'monthly', 'alltime']
+    ['newest', 'today', 'yesterday', 'threedays', 'weekly', 'monthly', 'alltime']
   end
 
   def self.available_sorts
