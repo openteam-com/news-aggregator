@@ -1,15 +1,17 @@
 class Entry < ActiveRecord::Base
+  attr_accessible :title, :url, :description, :published_at
+
+  before_save :default_values
   belongs_to :source
   has_many :statistics, :order => 'id desc'
-  attr_accessible :title, :url, :description, :published_at
   validates_presence_of :title, :url, :published_at
   validates_uniqueness_of :url
-  before_save :default_values
 
   scope :newest, -> { where('published_at >= :time', { :time => Time.zone.now-12.hour }) }
   scope :today, -> { where('published_at >= :time', { :time => Time.zone.now.beginning_of_day }) }
   scope :yesterday, -> { where('published_at >= :time', { :time => Date.today-1...Date.today }) }
   scope :threedays, -> { where('published_at >= :time', { :time => Time.zone.now.beginning_of_day - 3.days }) }
+  scope :from_to, -> (date) { where(published_at: Time.zone.parse(date)..Time.zone.parse(date).end_of_month) }
   scope :weekly, -> { where('published_at >= :time', { :time => Time.zone.now - 7.days }) }
   scope :monthly, -> { where('published_at >= :time', { :time => Time.zone.now - 30.days }) }
   scope :alltime

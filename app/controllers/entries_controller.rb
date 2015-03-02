@@ -1,14 +1,20 @@
 # encoding: utf-8
 class EntriesController < ApplicationController
-  helper_method :page, :current_period, :current_source, :search_query, :current_sort
+  helper_method :page, :current_period, :current_source, :search_query, :current_sort, :gluing_date
 
   def index
-    collection = if params['utf8']
-      HasSearcher.searcher(:entries, :q => search_query, :source => current_source)
-        .send(current_period).send(current_sort)
-        .paginate(:page => page, :per_page => per_page).hits
+    if params[:custom_date]
+      collection = Entry.from_to(gluing_date).send(current_sort).page(page).per(per_page)
+
     else
-      Entry.send(current_period).send(current_sort).page(page).per(per_page)
+
+      collection = if params['utf8']
+                     HasSearcher.searcher(:entries, :q => search_query, :source => current_source)
+                       .send(current_period).send(current_sort)
+                       .paginate(:page => page, :per_page => per_page).hits
+                   else
+                     Entry.send(current_period).send(current_sort).page(page).per(per_page)
+                   end
     end
     @entries_wrapper = EntriesWrapper.new(collection)
     render :partial => 'entries_body' and return if request.xhr?
@@ -24,6 +30,10 @@ class EntriesController < ApplicationController
   def page
     page = params[:page].to_i
     page.zero? ? 1 : page
+  end
+
+  def gluing_date
+    "01.#{params[:custom_date].first[:month]}.#{params[:custom_date].first[:year]}"
   end
 
   def per_page
