@@ -2,11 +2,14 @@
 require 'feedjira'
 class Source < ActiveRecord::Base
   attr_accessible :url, :title, :favicon
+
   validates_presence_of :url, :title, :source
   validates_uniqueness_of :url
+  validate :check_valid_rss
+
   before_validation :set_source
   before_create :set_favicon
-  validate :check_valid_rss
+
   has_many :entries, :dependent => :destroy
 
   def fetch_entries
@@ -60,4 +63,5 @@ end
 #  updated_at :datetime         not null
 #  title      :string(255)
 #  favicon    :string(255)
+#  city       :string(255)
 #
