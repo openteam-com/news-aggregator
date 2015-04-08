@@ -14,6 +14,7 @@ group :default do
   gem 'airbrake',             '= 3.1.8'
   gem 'configliere'
   gem 'daemons'
+  gem 'default_value_for'
   gem 'enumerize'
   gem 'faraday_middleware',   '=0.9.0'
   gem 'feedjira'
