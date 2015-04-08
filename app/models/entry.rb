@@ -2,8 +2,10 @@ class Entry < ActiveRecord::Base
   attr_accessible :title, :url, :description, :published_at
 
   before_save :default_values
+
   belongs_to :source
   has_many :statistics, :order => 'id desc'
+
   validates_presence_of :title, :url, :published_at
   validates_uniqueness_of :url
 
@@ -66,6 +68,7 @@ class Entry < ActiveRecord::Base
     self.facebook_comments_count ||= 0
     self.facebook_likes_count ||= 0
     self.twitter_shares_count ||= 0
+
     update_rating
   end
 
@@ -103,4 +106,5 @@ end
 #  facebook_updated_at     :datetime
 #  twitter_shares_count    :integer
 #  twitter_updated_at      :datetime
+#  facebook_likes_count    :integer
 #

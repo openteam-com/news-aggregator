@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140523022312) do
+ActiveRecord::Schema.define(:version => 20150408112444) do
 
   create_table "entries", :force => true do |t|
     t.text     "title"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20140523022312) do
     t.datetime "updated_at", :null => false
     t.string   "title"
     t.string   "favicon"
+    t.string   "city"
   end
 
   create_table "suggested_entries", :force => true do |t|
