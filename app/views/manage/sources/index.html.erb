@@ -11,6 +11,7 @@
     <tr>
       <th>Заголовок</th>
       <th>Источник</th>
+      <th>Город</th>
       <th></th>
     </tr>
   </thead>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= source.title %></td>
         <td><%= source.source %></td>
+        <td><%= source.city %></td>
         <td><%= link_to "Изменить", edit_manage_source_path(source) %></td>
       </tr>
     <% end %>

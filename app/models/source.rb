@@ -1,16 +1,19 @@
 # encoding: utf-8
 require 'feedjira'
+
 class Source < ActiveRecord::Base
   attr_accessible :url, :title, :favicon
 
+  validate :check_valid_rss
   validates_presence_of :url, :title, :source
   validates_uniqueness_of :url
-  validate :check_valid_rss
 
   before_validation :set_source
   before_create :set_favicon
 
   has_many :entries, :dependent => :destroy
+
+  default_value_for :city, 'Томск'
 
   def fetch_entries
     feed = Feedjira::Feed.fetch_and_parse(url)
