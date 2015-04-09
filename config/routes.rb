@@ -3,6 +3,8 @@ NewsAggregator::Application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
 
   root to: 'entries#index'
+  #get "/:city/", to: 'entries#index'
+  #get "/" => redirect { |params, req| "/Tomsk/" }
 
   get '/znaigorod', :to => 'entries#znaigorod'
   get ':period', :to => 'entries#index', :as => :period, :constraints => {:period => Regexp.new(Entry.available_periods.join("|"))}
