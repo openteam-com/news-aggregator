@@ -20,7 +20,7 @@
       <tr>
         <td><%= source.title %></td>
         <td><%= source.source %></td>
-        <td><%= source.city.title %></td>
+        <td><%= source.city.try(:title) %></td>
         <td><%= link_to "Изменить", edit_manage_source_path(source) %></td>
       </tr>
     <% end %>

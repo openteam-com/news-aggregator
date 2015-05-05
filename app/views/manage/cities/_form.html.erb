@@ -1,8 +1,9 @@
-<%= link_to 'Удалить', manage_city_path(@city), :method => :delete, :confirm => 'Удалить?' unless @city.new_record? %>
+<%= link_to 'Удалить', manage_city_path(@city), :class => 'delete_link', :method => :delete, :confirm => 'Удалить?' unless @city.new_record? %>
 
 <%= simple_form_for [:manage, @city] do |f| %>
   <%= f.input :title %>
   <%= f.input :slug %>
+  <%= f.input :header %>
   <%= f.input :meta_title %>
   <%= f.input :meta_keywords %>
   <%= f.input :meta_description %>
