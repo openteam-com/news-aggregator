@@ -1,6 +1,6 @@
 # encoding: utf-8
 class EntriesController < ApplicationController
-  helper_method :page, :current_period, :current_source, :search_query, :current_sort, :gluing_date, :current_city
+  helper_method :page, :current_period, :current_source, :search_query, :current_sort, :gluing_date
 
   def index
     collection ||= if params[:custom_date]
@@ -50,9 +50,5 @@ class EntriesController < ApplicationController
 
   def current_source
     params.try(:[], 'search').try(:[], 'source')
-  end
-
-  def current_city
-    params[:city] || 'tomsk'
   end
 end
