@@ -1,8 +1,8 @@
 class City < ActiveRecord::Base
-  attr_accessible :title, :slug, :meta_title, :meta_keywords, :meta_description
+  attr_accessible :title, :slug, :meta_title, :meta_keywords, :meta_description, :header
   has_many :sources
 
-  validates_presence_of :title, :slug, :meta_title, :meta_keywords, :meta_description
+  validates_presence_of :title, :slug, :meta_title, :meta_keywords, :meta_description, :header
 end
 
 # == Schema Information

@@ -27,3 +27,13 @@ ru:
       city:
         tomsk: 'Томск'
         sevastopol: 'Севастополь'
+
+  activerecord:
+    attributes:
+      city:
+        title: Название города
+        slug: Slug
+        header: Заголовок h1
+        meta_title: meta title
+        meta_keywords: meta keywords
+        meta_description: meta description

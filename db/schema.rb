@@ -17,8 +17,9 @@ ActiveRecord::Schema.define(:version => 20150505052017) do
     t.string   "title"
     t.string   "slug"
     t.string   "meta_title"
-    t.string   "meta_keywords"
-    t.string   "meta_description"
+    t.text     "meta_keywords"
+    t.text     "meta_description"
+    t.string   "header"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

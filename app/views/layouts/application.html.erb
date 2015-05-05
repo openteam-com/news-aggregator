@@ -2,28 +2,28 @@
 <html lang='ru'>
   <head>
     <meta charset='UTF-8'>
-    <title><%= content_for?(:title) ? yield(:title) : t('site.title') %></title>
+    <title><%= page_meta.meta_title %></title>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
-    <meta name='description' content='<%= t('site.description') %>' />
-    <meta name='keywords' content='<%= t('site.keywords') %>' />
-    <meta property='og:site_name' content='<%= t('site.title') %>' />
+    <meta name='description' content='<%= page_meta.meta_description %>' />
+    <meta name='keywords' content='<%= page_meta.meta_keywords %>' />
+    <meta property='og:site_name' content='<%= page_meta.meta_title %>' />
     <meta property='og:type' content='website' />
     <meta property='og:url' content='<%= Settings['app']['url'] %>' />
     <meta property='og:locale' content='ru_RU' />
-    <meta property='og:title' content='<%= t('site.title') %>' />
-    <meta property='og:description' content='<%= t('site.description') %>' />
-    <meta property='og:image' content='<%#= URI.join(root_url, asset_path('social_image_og.jpg')) %>' />
+    <meta property='og:title' content='<%= page_meta.meta_title %>' />
+    <meta property='og:description' content='<%= page_meta.meta_description %>' />
+    <meta property='og:image' content='<%= URI.join(entries_index_url(params[:city]), asset_path('social_image_og.jpg')) %>' />
     <meta name='twitter:card' content='summary'>
     <meta name='twitter:site' content='@znaigorod'>
     <meta name='twitter:creator' content='@znaigorod'>
-    <meta name='twitter:title' content='<%= t('site.title') %>'>
-    <meta name='twitter:description' content='<%= t('site.description') %>'>
+    <meta name='twitter:title' content='<%= page_meta.meta_title %>'>
+    <meta name='twitter:description' content='<%= page_meta.meta_description %>'>
     <meta name='twitter:domain' content='<%= Settings['app']['url'] %>'>
     <meta name='twitter:url' content='<%= Settings['app']['url'] %>'>
-    <meta name='twitter:image' content='<%#= URI.join(root_url, asset_path('social_image_twitter.jpg')) %>'>
+    <meta name='twitter:image' content='<%= URI.join(entries_index_url(params[:city]), asset_path('social_image_twitter.jpg')) %>'>
     <link rel='canonical' href='<%= Settings['app.url'] %>' />
   </head>
   <body>

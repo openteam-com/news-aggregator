@@ -7,6 +7,7 @@ class CreateCities < ActiveRecord::Migration
       t.string :meta_title
       t.text :meta_keywords
       t.text :meta_description
+      t.string :header
 
       t.timestamps
     end
