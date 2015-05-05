@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150408112444) do
+ActiveRecord::Schema.define(:version => 20150505052017) do
+
+  create_table "cities", :force => true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.string   "meta_title"
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "entries", :force => true do |t|
     t.text     "title"
@@ -43,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20150408112444) do
     t.datetime "updated_at", :null => false
     t.string   "title"
     t.string   "favicon"
-    t.string   "city"
+    t.integer  "city_id"
   end
 
   create_table "suggested_entries", :force => true do |t|
