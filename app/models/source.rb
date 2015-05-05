@@ -2,27 +2,19 @@
 require 'feedjira'
 
 class Source < ActiveRecord::Base
-  extend Enumerize
 
-  attr_accessible :url, :title, :favicon, :city
+  attr_accessible :url, :title, :favicon, :city_id
 
   validate :check_valid_rss
-  validates_presence_of :url, :title, :source, :city
+  validates_presence_of :url, :title, :source
   validates_uniqueness_of :url
 
   before_validation :set_source
   before_create :set_favicon
   after_save :reindex_entries
 
+  belongs_to :city
   has_many :entries, :dependent => :destroy
-
-  enumerize :city, :in => [:tomsk, :sevastopol], :predicates => true
-
-  city.values.each do |method_name|
-    self.class.send :define_method,  method_name do
-      where(:city => method_name)
-    end
-  end
 
   def fetch_entries
     feed = Feedjira::Feed.fetch_and_parse(url)
@@ -64,7 +56,7 @@ class Source < ActiveRecord::Base
   end
 
   def reindex_entries
-    entries.map { |m| m.delay.index }
+    entries.map { |m| m.delay.index! }
   end
 end
 
@@ -79,5 +71,5 @@ end
 #  updated_at :datetime         not null
 #  title      :string(255)
 #  favicon    :string(255)
-#  city       :string(255)
+#  city_id    :integer
 #

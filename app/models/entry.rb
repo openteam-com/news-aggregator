@@ -17,7 +17,7 @@ class Entry < ActiveRecord::Base
     string(:source) { source.source }
     float :rating
     time :published_at
-    string :city
+    string(:city) { city.slug }
   end
 
   def self.available_periods
