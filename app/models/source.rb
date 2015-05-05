@@ -2,18 +2,27 @@
 require 'feedjira'
 
 class Source < ActiveRecord::Base
-  attr_accessible :url, :title, :favicon
+  extend Enumerize
+
+  attr_accessible :url, :title, :favicon, :city
 
   validate :check_valid_rss
-  validates_presence_of :url, :title, :source
+  validates_presence_of :url, :title, :source, :city
   validates_uniqueness_of :url
 
   before_validation :set_source
   before_create :set_favicon
+  after_save :reindex_entries
 
   has_many :entries, :dependent => :destroy
 
-  default_value_for :city, 'Томск'
+  enumerize :city, :in => [:tomsk, :sevastopol], :predicates => true
+
+  city.values.each do |method_name|
+    self.class.send :define_method,  method_name do
+      where(:city => method_name)
+    end
+  end
 
   def fetch_entries
     feed = Feedjira::Feed.fetch_and_parse(url)
@@ -52,6 +61,10 @@ class Source < ActiveRecord::Base
   def check_valid_rss
     feed = Feedjira::Feed.fetch_and_parse(self.url)
     errors.add(:url, "в ответ приходит не RSS") if feed.is_a?(Integer)
+  end
+
+  def reindex_entries
+    entries.map { |m| m.delay.index }
   end
 end
 

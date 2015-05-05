@@ -1,27 +1,23 @@
 # encoding: utf-8
 class EntriesController < ApplicationController
-  helper_method :page, :current_period, :current_source, :search_query, :current_sort, :gluing_date
+  helper_method :page, :current_period, :current_source, :search_query, :current_sort, :gluing_date, :current_city
 
   def index
-    if params[:custom_date]
-      collection = Entry.from_to(gluing_date).send(current_sort).page(page).per(per_page)
-
-    else
-
-      collection = if params['utf8']
-                     HasSearcher.searcher(:entries, :q => search_query, :source => current_source)
+    collection ||= if params[:custom_date]
+                     Entry.from_to(gluing_date).send(current_sort).page(page).per(per_page)
+                   else
+                     HasSearcher.searcher(:entries, :q => search_query, :source => current_source, :city => current_city)
                        .send(current_period).send(current_sort)
                        .paginate(:page => page, :per_page => per_page).hits
-                   else
-                     Entry.send(current_period).send(current_sort).page(page).per(per_page)
                    end
-    end
+
     @entries_wrapper = EntriesWrapper.new(collection)
     render :partial => 'entries_body' and return if request.xhr?
   end
 
   def znaigorod
-    @entries_wrapper = EntriesWrapper.new(Entry.send('newest').send('rating').page(1).per(6))
+    collection = HasSearcher.searcher(:entries, :city => current_city).newest.rating.paginate(:page => 1, :per_page => 6).hits
+    @entries_wrapper = EntriesWrapper.new(collection)
     render layout: false
   end
 
@@ -54,5 +50,9 @@ class EntriesController < ApplicationController
 
   def current_source
     params.try(:[], 'search').try(:[], 'source')
+  end
+
+  def current_city
+    params[:city] || 'tomsk'
   end
 end

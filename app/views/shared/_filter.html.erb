@@ -4,7 +4,7 @@
     <ul>
       <% Entry.available_periods.each do |scope| %>
         <li<%= " class='selected'".html_safe if current_period == scope %>>
-          <%= link_to t("period.#{scope}"), period_path(scope, params) %>
+          <%= link_to t("period.#{scope}"), period_path(current_city, scope, params) %>
         </li>
       <% end %>
       <li>
@@ -21,7 +21,7 @@
     <ul>
       <% Entry.available_sorts.each do |sort| %>
         <li<%= " class='selected'".html_safe if current_sort == sort %>>
-          <%= link_to t("sort_by.#{sort}"), sort_by_path(sort, params) %>
+          <%= link_to t("sort_by.#{sort}"), sort_by_path(current_city, sort, params) %>
         </li>
       <% end %>
     </ul>

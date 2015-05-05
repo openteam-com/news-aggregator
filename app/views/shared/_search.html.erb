@@ -1,5 +1,5 @@
 <div class='search'>
-  <%= simple_form_for :search, :url => period_path(current_period, params), :method => :get do |f| %>
+  <%= simple_form_for :search, :url => period_path(params[:city], current_period, params.except(:city)), :method => :get do |f| %>
     <div class='submit'>
       <%= f.submit 'Найти' %>
     </div>

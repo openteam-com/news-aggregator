@@ -2,8 +2,8 @@ class AddCityToSource < ActiveRecord::Migration
   def change
     add_column :sources, :city, :string
 
-    Source.all.each do |source|
-      source.update_attribute(:city, 'Томск')
-    end
+    Source.update_all :city => 'tomsk'
+
+    Entry.reindex
   end
 end
