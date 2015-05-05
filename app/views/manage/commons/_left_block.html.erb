@@ -2,5 +2,9 @@
   <li <%= ' class="selected"'.html_safe if params[:controller] == "manage/sources" %>>
     <%= link_to "RSS - ленты", manage_sources_path  %>
   </li>
+
+  <li <%= ' class="selected"'.html_safe if params[:controller] == "manage/cities" %>>
+    <%= link_to "Мета/город", manage_cities_path  %>
+  </li>
 </ul>
 

@@ -1,0 +1,2 @@
+module Manage::CitiesHelper
+end

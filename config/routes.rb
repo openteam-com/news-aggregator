@@ -21,5 +21,6 @@ NewsAggregator::Application.routes.draw do
     root to: "sources#index"
 
     resources :sources
+    resources :cities, :except => [:show]
   end
 end
