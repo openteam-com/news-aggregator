@@ -19,7 +19,9 @@ class Entry < ActiveRecord::Base
     time :published_at
     string(:city) { city.slug }
   end
-
+  
+  scope :newest, -> { where('published_at >= :time', { :time => Time.zone.now-12.hour }) }
+  
   def self.available_periods
     ['newest', 'today', 'yesterday', 'threedays', 'weekly', 'monthly', 'alltime']
   end
