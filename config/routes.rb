@@ -2,13 +2,15 @@ require 'sidekiq/web'
 NewsAggregator::Application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
 
-  root to: 'entries#index'
-  #get "/:city/", to: 'entries#index'
-  #get "/" => redirect { |params, req| "/Tomsk/" }
+  #root to: 'entries#index'
 
-  get '/znaigorod', :to => 'entries#znaigorod'
-  get ':period', :to => 'entries#index', :as => :period, :constraints => {:period => Regexp.new(Entry.available_periods.join("|"))}
-  get ':sort_by', :to => 'entries#index', :as => :sort_by, :constraints => {:sort_by => Regexp.new(Entry.available_sorts.join("|"))}
+  get '/', :to => redirect('/tomsk')
+
+  get "/:city" => 'entries#index', :as => "entries_index", :constraints => {:city => Regexp.new(Source.city.values.join("|"))}
+
+  get '/:city/znaigorod', :to => 'entries#znaigorod', :constraints => {:city => Regexp.new(Source.city.values.join("|"))}
+  get '/:city/:period', :to => 'entries#index', :as => :period, :constraints => {:period => Regexp.new(Entry.available_periods.join("|"))}
+  get '/:city/:sort_by', :to => 'entries#index', :as => :sort_by, :constraints => {:sort_by => Regexp.new(Entry.available_sorts.join("|"))}
   get 'away' => 'away#go'
 
   %w[about].each do |method|

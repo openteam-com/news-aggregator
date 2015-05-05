@@ -8,14 +8,14 @@
   </td>
   <td colspan='6'>
     <div class='source'>
-      <%= simple_form_for :search, :url => period_path(current_period, params), :method => :get do |form| %>
+      <%= simple_form_for :search, :url => period_path(current_city, current_period, params), :method => :get do |form| %>
         <div class='submit'>
           <%= form.submit 'Фильтр', :class => :btn %>
         </div>
         <%= form.input :source,
           :as => :select,
           :label => false,
-          :collection => Source.all.group_by(&:source).keys.sort,
+          :collection => Source.send(current_city).group_by(&:source).keys.sort,
           :selected => current_source,
           :include_blank => true,
           :required => false

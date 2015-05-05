@@ -2,12 +2,11 @@ HasSearcher.create_searcher :entries do
   models :entry
 
   property :source
+  property :city
 
   keywords :q do
     highlight :title
   end
-
-  scope(:order_by_rating) { order_by(:rating, :desc) }
 
   scope :newest do
     with(:published_at).greater_than DateTime.now - 12.hour

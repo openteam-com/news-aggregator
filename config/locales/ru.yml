@@ -22,7 +22,8 @@ ru:
     novelty: новизне
     rating: рейтингу
 
-  suggested:
-    interestings: Интересное
-    interviews: Интервью
-    articles: Статьи
+  enumerize:
+    source:
+      city:
+        tomsk: 'Томск'
+        sevastopol: 'Севастополь'
