@@ -1,0 +1,18 @@
+<%= link_to 'Добавить город', new_manage_city_path %>
+
+<table>
+  <thead>
+    <th>Город</th>
+    <th>Slug</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= city.title %></td>
+        <td><%= city.slug %></td>
+        <td><%= link_to 'Изменить', edit_manage_city_path(city) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -5,8 +5,8 @@ class CreateCities < ActiveRecord::Migration
       t.string :slug
 
       t.string :meta_title
-      t.string :meta_keywords
-      t.string :meta_description
+      t.text :meta_keywords
+      t.text :meta_description
 
       t.timestamps
     end

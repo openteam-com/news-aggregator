@@ -11,10 +11,8 @@ class Manage::SourcesController < Manage::ApplicationController
   def create
     @source = Source.new(params[:source])
     if @source.save
-      #flash[:notice] = "Источник добавлен"
       redirect_to [:manage, :sources]
     else
-      #flash[:alert] = "Источник не может быть добавлен"
       render :action => :new
     end
   end
@@ -26,10 +24,8 @@ class Manage::SourcesController < Manage::ApplicationController
   def update
     @source = Source.find(params[:id])
     if @source.update_attributes(params[:source])
-      #flash[:notice] = "Источник добавлен"
       redirect_to [:manage, :sources]
     else
-      #flash[:alert] = "Источник не может быть сохранен"
       render :action => :edit
     end
   end
