@@ -3,12 +3,15 @@
     <span>За</span>
     <ul>
       <% Entry.available_periods.each do |scope| %>
-        <li<%= " class='selected'".html_safe if current_period == scope %>>
-          <%= link_to t("period.#{scope}"), period_path(current_city, scope, params) %>
+        <li<%= " class='selected'".html_safe if current_period == scope && !params[:custom_date] %>>
+          <%= link_to t("period.#{scope}"), period_path(current_city, scope, params.except(*[:custom_date, :commit, :utf8])) %>
         </li>
       <% end %>
-      <li>
-        <%= form_tag "/#{current_city}", method: :get do %>
+      <li <%= " class='selected'".html_safe if params[:custom_date] %>>
+        <span class='archive'>
+          Архив:
+        </span>
+        <%= form_tag "/#{current_city}", method: :get, class: :custom_date_form do %>
           <%= select_month(params[:custom_date].try(:first).try(:[], 'month').try(:to_i) || Date.today, prefix: 'custom_date[]') %>
           <%= select_year(params[:custom_date].try(:first).try(:[], 'year').try(:to_i) || Date.today, start_year: 2014, end_year: Date.today.year, prefix: 'custom_date[]') %>
           <%= submit_tag 'Фильтр' %>

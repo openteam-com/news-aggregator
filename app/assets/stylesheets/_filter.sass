@@ -31,17 +31,26 @@
         a
           text-decoration: none
 
+        .archive, .custom_date_form
+          float: left
+
+        .archive
+          margin-top: 3px
+
         &:last-child
           margin-right: 0
           padding-right: 0
           border-right: none
 
-        &.selected a
+        &.selected a, &.selected span
           color: #444
           font-size: 18px
 
           &:hover
             border-color: #128bce
+
+        &.selected span
+          margin: 0 5px 0 0
 
   .source
     text-align: right
