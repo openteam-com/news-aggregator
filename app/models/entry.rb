@@ -4,10 +4,14 @@ class Entry < ActiveRecord::Base
   before_save :default_values
 
   belongs_to :source
-  has_many :statistics, :order => 'id desc'
 
   validates_presence_of :title, :url, :published_at
   validates_uniqueness_of :url
+
+  scope :from_to, -> (date) { where(published_at: Time.zone.parse(date)..Time.zone.parse(date).end_of_month)  }
+
+  scope :novelty, -> { order('published_at desc')  }
+  scope :rating, -> { order('rating desc')  }
 
   delegate :city, :to => :source
 

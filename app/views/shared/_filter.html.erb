@@ -8,7 +8,7 @@
         </li>
       <% end %>
       <li>
-        <%= form_tag '/', method: :get do %>
+        <%= form_tag "/#{current_city}", method: :get do %>
           <%= select_month(params[:custom_date].try(:first).try(:[], 'month').try(:to_i) || Date.today, prefix: 'custom_date[]') %>
           <%= select_year(params[:custom_date].try(:first).try(:[], 'year').try(:to_i) || Date.today, start_year: 2014, end_year: Date.today.year, prefix: 'custom_date[]') %>
           <%= submit_tag 'Фильтр' %>
