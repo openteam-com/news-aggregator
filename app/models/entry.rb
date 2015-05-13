@@ -9,9 +9,10 @@ class Entry < ActiveRecord::Base
   validates_uniqueness_of :url
 
   scope :from_to, -> (date) { where(published_at: Time.zone.parse(date)..Time.zone.parse(date).end_of_month)  }
+  scope :newest,  -> { where('published_at >= :time', { :time => Time.zone.now-12.hour }) }
 
   scope :novelty, -> { order('published_at desc')  }
-  scope :rating, -> { order('rating desc')  }
+  scope :rating,  -> { order('rating desc')  }
 
   delegate :city, :to => :source
 
@@ -23,9 +24,8 @@ class Entry < ActiveRecord::Base
     time :published_at
     string(:city) { city.slug }
   end
-  
-  scope :newest, -> { where('published_at >= :time', { :time => Time.zone.now-12.hour }) }
-  
+
+
   def self.available_periods
     ['newest', 'today', 'yesterday', 'threedays', 'weekly', 'monthly', 'alltime']
   end

@@ -1,3 +1,3 @@
-<% cache(:expires_in => 1.day) do %>
-  <%= Zg::Header.new.render %>
+<% cache("#{current_city}_header", :expires_in => 1.day) do %>
+  <%= Zg::Header.new(current_city).render %>
 <% end %>

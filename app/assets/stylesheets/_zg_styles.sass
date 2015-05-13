@@ -455,9 +455,6 @@ $desktop_default_width: 1200px
         top: 4px
         width: 34px
 
-    .dashboard
-      display: none
-
 .new_feature
   .top_headline
     background: #019bdb
@@ -806,59 +803,3 @@ $main_menu_margin_top: 50px
         ul
           left: auto
           right: 0
-
-    .search_form
-      display: none
-      float: left
-      width: 20%
-      margin-top: $main_menu_margin_top
-
-      form
-        +clearfix
-        position: relative
-
-      +placeholder
-        color: #999
-
-      .search
-        font-size: 11px
-        width: 73%
-        height: 13px
-        color: #000
-        font-family: 'Verdana', 'Tahoma', sans-serif
-        border: 2px solid #e8e8e8
-        +border-top-left-radius
-        border-bottom: none
-        border-right: none
-        margin: 0
-        padding: 6px 10px
-
-        &:focus
-          outline: none
-
-      .submit
-        position: absolute
-        top: 0
-        right: 0
-        width: 30px
-        height: 29px
-        margin: 0
-        padding: 0
-        border: 0
-        cursor: pointer
-        +border-top-right-radius
-        background: #e8e8e8 image_url('search_submit.png') no-repeat center 6px
-
-        &:hover
-          background-position: center -58px
-
-      &.selected
-        .search
-          border-color: #f60
-
-        .submit
-          background-color: #f60
-          background-position: center -26px
-
-          &:hover
-            background-position: center -26px
