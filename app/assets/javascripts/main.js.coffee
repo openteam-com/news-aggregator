@@ -9,4 +9,7 @@ $ ->
   $('.left_side table thead span').tipsy
     gravity: 's'
 
+  $('.favicon').tipsy
+    gravity: 's'
+
   return

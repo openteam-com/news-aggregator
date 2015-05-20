@@ -1,6 +1,9 @@
 <tr>
   <td class='left'>
-    <span class='favicon'><%= image_tag hit_wrapper.result.source.favicon, :size => '16x16' %></span>
+    <span class='favicon' original-title="<%= hit_wrapper.result.source.title %>">
+      <%= image_tag hit_wrapper.result.source.favicon, :size => '16x16',
+        :alt => hit_wrapper.result.source.title %>
+    </span>
     <p><%= link_to hit_wrapper.title.html_safe, hit_wrapper.result.url, :target => '_blank' %></p>
   </td>
   <td class="rating"><%= hit_wrapper.result.vk_shares_count.to_i %></td>

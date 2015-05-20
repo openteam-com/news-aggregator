@@ -1,6 +1,6 @@
 <tr>
   <td class='left'>
-    <span class='favicon'><%= image_tag entry.source.favicon, :size => '16x16' %></span>
+    <span class='favicon'><%= image_tag(entry.source.favicon, :size => '16x16', :title => entry.source.title) %></span>
     <p><%= link_to entry.title.gilensize.html_safe, entry.link, :target => '_blank' %></p>
   </td>
   <td class='rating'><%= entry.vk_shares_count.to_i %></td>

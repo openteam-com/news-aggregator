@@ -31,6 +31,10 @@ class Zg::Header
     }
   end
 
+  def zg_prefix
+    current_city == 'tomsk' ? "http://" : "http://" + current_city + "."
+  end
+
   def entries_to_remove
     ['.search_form', '.dashboard']
   end
@@ -58,7 +62,7 @@ class Zg::Header
     parse_header.search(tags.keys.join(',')).each do |node|
       url_param = tags[node.name]
       src       = node[url_param]
-      node[url_param] = Settings['znaigorod.url']+src unless src.match(/\Ahttp/)
+      node[url_param] = zg_prefix + Settings['znaigorod.host']+src unless src.match(/\Ahttp/)
     end
     parse_header
   end
