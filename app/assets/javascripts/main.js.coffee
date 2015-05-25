@@ -10,6 +10,6 @@ $ ->
     gravity: 's'
 
   $('.favicon').tipsy
-    gravity: 's'
+    gravity: 'w'
 
   return
