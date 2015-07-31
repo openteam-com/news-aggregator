@@ -9,7 +9,7 @@
             <ul>
               <% Entry.available_periods.each do |scope| %>
                 <li<%= " class='selected'".html_safe if current_period == scope %>>
-                  <%= link_to t("period.#{scope}"), period_url(params[:city], scope) %>
+                  <%= link_to t("period.#{scope}"), period_url(params[:city], scope), target: :_blank %>
                 </li>
               <% end %>
             </ul>
