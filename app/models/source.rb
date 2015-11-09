@@ -18,7 +18,7 @@ class Source < ActiveRecord::Base
 
   def fetch_entries
     feed = Feedjira::Feed.fetch_and_parse(url)
-    if feed.entries.any?
+    if !feed.entries.is_a?(Fixnum) && feed.entries.any?
       feed.entries.each do |entry|
         summary = if entry.summary.nil?
                     ''
