@@ -17,20 +17,24 @@ class Source < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
 
   def fetch_entries
-    feed = Feedjira::Feed.fetch_and_parse(url)
-    if !feed.entries.is_a?(Fixnum) && feed.entries.any?
-      feed.entries.each do |entry|
-        summary = if entry.summary.nil?
-                    ''
-                  else
-                    Sanitize.clean(entry.summary.lstrip)
-                  end
-        entries.create(
-          title: entry.title,
-          url: entry.url,
-          description: summary,
-          published_at: entry.published)
+    begin
+      feed = Feedjira::Feed.fetch_and_parse(url)
+      if feed.entries.any?
+        feed.entries.each do |entry|
+          summary = if entry.summary.nil?
+                      ''
+                    else
+                      Sanitize.clean(entry.summary.lstrip)
+                    end
+          entries.create(
+            title: entry.title,
+            url: entry.url,
+            description: summary,
+            published_at: entry.published)
+        end
       end
+    rescue
+      []
     end
   end
 

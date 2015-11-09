@@ -2,7 +2,7 @@ namespace :update do
 
   desc 'Update rss'
   task :rss => :environment do
-    Source.all.map { |c| c.delay.fetch_entries }
+    Source.all.map { |c| c.delay(:retry => false).fetch_entries }
   end
 
   desc 'Update newest entries statistics'
