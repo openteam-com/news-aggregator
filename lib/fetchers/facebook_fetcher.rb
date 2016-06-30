@@ -25,19 +25,25 @@ class FacebookFetcher
 
   def update_entry_stat(entry)
     stats = get_stats(entry.url)
-    begin
-      entry.facebook_shares_count = stats.first['share_count']
-      entry.facebook_comments_count = stats.first['comment_count']
-      entry.facebook_likes_count = stats.first['like_count']
-      entry.facebook_updated_at = Time.zone.now
-      entry.save
-    rescue
+    unless stats.nil?
+      begin
+        entry.facebook_shares_count = stats.first['share_count']
+        entry.facebook_comments_count = stats.first['comment_count']
+        entry.facebook_likes_count = stats.first['like_count']
+        entry.facebook_updated_at = Time.zone.now
+        entry.save
+      rescue
+      end
     end
   end
 
   def get_stats(url)
     fql = "SELECT url, share_count, like_count, comment_count, total_count FROM link_stat WHERE url='#{url}'"
     fetch_url = "https://api.facebook.com/method/fql.query?format=json&query=#{fql}"
-    hash = JSON.parse(open(URI.encode(fetch_url)).read)
+    begin
+      return JSON.parse(open(URI.encode(fetch_url)).read)
+    rescue
+      return nil
+    end
   end
 end
