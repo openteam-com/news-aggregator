@@ -23,9 +23,12 @@ class TwitterFetcher
   end
 
   def update_entry_stat(entry)
-    entry.twitter_shares_count = @twitter.search(entry.stripped_url).count
-    entry.twitter_updated_at = Time.zone.now
-    entry.save
+    begin
+      entry.twitter_shares_count = @twitter.search(entry.stripped_url).count
+      entry.twitter_updated_at = Time.zone.now
+      entry.save
+    rescue
+    end
   end
 
 end
