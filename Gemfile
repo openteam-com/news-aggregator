@@ -8,11 +8,13 @@ group :assets do
   gem 'jquery-ui-sass-rails'
   gem 'sass-rails'
   gem 'uglifier'
+  gem "font-awesome-rails"
 end
 
 group :default do
   gem 'airbrake',             '= 3.1.8'
   gem 'configliere'
+  gem 'compass-flexbox'
   gem 'daemons'
   gem 'default_value_for'
   gem 'enumerize'

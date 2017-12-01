@@ -1,0 +1,353 @@
+/* base */
+$desktop_min_width: 1000px
+$desktop_max_width: 1440px
+$desktop_default_width: 1200px
+
+=gray_button_style
+  font-family: 'Verdana', 'Tahoma', sans-serif
+  font-size: 12px
+  cursor: pointer
+  color: #000
+  +inline-block
+  font-size: 12px
+  margin: 0 10px 0 0
+  border: 1px solid #ccc
+  background-color: #e8e8e8
+  +background(linear-gradient(top, #ffffff, #cfcfcf))
+  padding: 5px 15px
+
+  &:hover
+    +background(linear-gradient(top, #fff, #ddd))
+
+  &:active
+    +background(linear-gradient(top, #ddd, #fff))
+    padding: 6px 15px 4x
+
+=max-width($max_width)
+  max-width: $max_width
+
+=liquid-size($min_width, $max_width)
+  +min-width($min_width)
+  +max-width($max_width)
+  margin: 0 auto
+
+=fixed-size
+  +min-width(0)
+  +max-width(none)
+  width: $desktop_default_width !important
+  margin: 0 auto
+
+/* placheholder for form */
+
+=placeholder
+  @each $prefix in "::-webkit-input", ":moz", "::-moz", ":-ms-input"
+    #{$prefix}-placeholder
+      @content
+
+/* button style */
+=button-style($image: false)
+  color: #fff
+  background-color: #ff7f1a
+  border: 1px solid #f60
+  padding: 1px 8px 2px
+  &:hover
+    +text-shadow(#f60 1px 1px 1px)
+    text-decoration: none
+    @if $image
+      background: #f93 $image
+    @else
+      background: none
+      background-color: #f93
+  &:active
+    background-color: #ff7f1a
+    @if $image
+      +background($image, linear-gradient(top, #f60, #f93))
+    @else
+      +background(linear-gradient(top, #f60, #f93))
+    padding: 2px 8px 1px
+
+=grey-button-style
+  color: #000
+  font-family: Verdana, Tahoma, sans-serif
+  cursor: pointer
+  background-color: #e9e9e9
+  +background(linear-gradient(top, #fefefe, #cecece))
+  border: 1px solid #ccc
+  padding: 1px 8px 2px
+  margin: 0
+  &:hover
+    +text-shadow(#fefefe 1px 1px 1px)
+    text-decoration: none
+    background: none
+    background-color: #e9e9e9
+    color: #ff6600
+  &:active
+    +text-shadow(#fefefe 1px 1px 1px)
+    text-decoration: none
+    background: none
+    background-color: #e9e9e9
+    padding: 2px 8px 1px
+/* toggable buttons for filters */
+
+=toggable-links($padding-top: 1px, $padding-bottom: 2px)
+  a
+    display: block
+    color: #000
+    line-height: 16px
+    background-color: #e8e8e8
+    padding: $padding-top 8px $padding-bottom
+    +box-shadow(0px 2px 0px 0px #cdcdcd)
+
+    &:hover
+      color: #f60
+      text-decoration: none
+
+    &:active
+      padding: $padding-bottom 8px $padding-top
+      +transition(.2s)
+
+  &.selected a
+    color: #fff
+    line-height: 16px
+    background-color: #f60
+    +box-shadow(rgba(0, 0, 0, 0.3) 1px 1px 2px inset)
+    padding: ($padding-top + 1) 8px ($padding-bottom + 1)
+
+    &:active
+      padding: ($padding-bottom + 1) 8px ($padding-top + 1)
+
+  &.disabled a
+    color: #ccc
+    cursor: default
+
+    &:active
+      padding: $padding-top 8px $padding-bottom
+
+=social_actions_popup
+  position: relative
+
+  .cloud_wrapper
+
+    .social_signin_links
+      +clearfix
+      margin: 10px 0 0
+      text-align: center
+
+      li
+        +inline-block
+        margin: 0 15px 0 0
+
+        &:last-child
+          margin-right: 0
+
+        a
+          display: block
+          text-indent: -9999px
+          height: 33px
+          width: 33px
+
+        &.vkontakte a
+          background: image_url('social_icons.png') no-repeat 0 0
+
+        &.yandex a
+          background: image_url('social_icons.png') no-repeat -33px 0
+
+        &.facebook a
+          background: image_url('social_icons.png') no-repeat -66px 0
+
+        &.twitter a
+          background: image_url('social_icons.png') no-repeat -99px 0
+
+        &.google a
+          background: image_url('social_icons.png') no-repeat -132px 0
+
+        &.mail_ru a
+          background: image_url('social_icons.png') no-repeat -165px 0
+
+        &.odnoklassniki a
+          background: image_url('social_icons.png') no-repeat -198px 0
+
+=avatar-style
+  float: left
+  +clearfix
+  width: 35px
+  height: 35px
+  margin: 0 5px 0 0
+
+=avatar-list-style
+  +clearfix
+  margin: 0 5px
+
+  li
+    +clearfix
+    margin-bottom: 5px
+
+  .avatar
+    +avatar-style
+
+  .details
+    +clearfix
+    margin-top: 8px
+
+    .name
+      font-size: 12px
+
+=as_blue_ribbon
+  color: #fff
+  text-align: center
+  background-color: #009bdb
+  padding: 3px 0
+  z-index: 1
+
+  &:before
+    content: ''
+    width: 0
+    height: 0
+    position: absolute
+    left: 0
+    bottom: -10px
+    border-width: 5px 3px
+    border-style: solid
+    border-color: #0065cd #0065cd transparent transparent
+
+  &:after
+    content: ''
+    width: 0
+    height: 0
+    position: absolute
+    right: 0
+    bottom: -10px
+    border-width: 5px 3px
+    border-style: solid
+    border-color: #0065cd transparent transparent #0065cd
+
+=as_green_ribbon
+  color: #fff
+  text-align: center
+  background-color: #009999
+  padding: 4px 0
+  z-index: 1
+
+  &:before
+    content: ''
+    width: 0
+    height: 0
+    position: absolute
+    left: 0
+    bottom: -10px
+    border-width: 5px 3px
+    border-style: solid
+    border-color: #006666 #006666 transparent transparent
+
+  &:after
+    content: ''
+    width: 0
+    height: 0
+    position: absolute
+    right: 0
+    bottom: -10px
+    border-width: 5px 3px
+    border-style: solid
+    border-color: #006666 transparent transparent #006666
+
+/* стрелочки */
+=left-arrow($arrow-color: #099, $background: #ececec, $text-color: #fff)
+  background: $arrow-color
+  color: $text-color
+  float: right
+  font-size: 12px
+  height: 30px
+  line-height: 30px
+  margin: 0
+  padding: 0 10px 0 0
+  position: relative
+
+  &:before
+    background: $background
+    float: left
+    border: 15px solid transparent
+    border-left: 0
+    border-right-color: $arrow-color
+    content: ''
+    height: 0
+    width: 0
+
+/* animations */
+=animate_blink($speed: 1s, $repeat: true)
+  animation: fade $speed forwards
+  -webkit-animation: fade $speed forwards
+  -moz-animation: fade $speed forwards
+  -o-animation: fade $speed forwards
+  @if $repeat == true
+    animation-iteration-count: infinite
+    -webkit-animation-iteration-count: infinite
+    -moz-animation-iteration-count: infinite
+    -o-animation-iteration-count: infinite
+
+=animate_paused
+  animation: show 0 forwards
+  -webkit-animation: show 0 forwards
+  -moz-animation: show 0 forwards
+  -o-animation: show 0 forwards
+  +opacity(1)
+  animation-play-state: paused
+  -webkit-animation-play-state: paused
+  -moz-animation-play-state: paused
+  -o-animation-play-state: paused
+
+@keyframes fade
+  0%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+@-webkit-keyframes fade
+  0%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+@-moz-keyframes fade
+  0%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+@-o-keyframes fade
+  0%
+    opacity: 0
+  50%
+    opacity: 1
+  100%
+    opacity: 0
+
+@keyframes show
+  0%
+    opacity: 1
+  100%
+    opacity: 1
+
+@-webkit-keyframes show
+  0%
+    opacity: 1
+  100%
+    opacity: 1
+
+@-moz-keyframes show
+  0%
+    opacity: 1
+  100%
+    opacity: 1
+
+@-o-keyframes show
+  0%
+    opacity: 1
+  100%
+    opacity: 1
+
