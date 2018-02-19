@@ -4,7 +4,11 @@
       <%= image_tag hit_wrapper.result.source.favicon, :size => '16x16',
         :alt => hit_wrapper.result.source.title %>
     </span>
-    <p><%= link_to hit_wrapper.title.html_safe, hit_wrapper.result.url, :target => '_blank' %></p>
+    <p>
+      <noindex>
+        <%= link_to hit_wrapper.title.html_safe, hit_wrapper.result.url, :target => '_blank', rel: 'nofollow' %>
+      </noindex>
+    </p>
   </td>
   <td class="rating"><%= hit_wrapper.result.vk_shares_count.to_i %></td>
   <td class="rating"><%= hit_wrapper.result.facebook_shares_count.to_i %></td>
